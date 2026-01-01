@@ -32,7 +32,7 @@ export const register = asynHandler(async (req, res) => {
       role,
     });
 
-    res.status(200).jsonn({
+    res.status(200).json({
       newUser,
       message: "user created successfully",
       success: true,

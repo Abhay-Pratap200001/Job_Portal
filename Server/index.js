@@ -7,6 +7,9 @@ import cors from 'cors'
 import { connectDB } from "./utils/dbConnect.js";
 import { errorHandler } from "./middleware/error.middleware.js";
 import userRoute from './routes/user.route.js'
+import companyRoute from './routes/company.route.js'
+
+
 
 dotenv.config();
 const app = express();
@@ -24,6 +27,8 @@ app.use(cors({
 app.use(errorHandler);
 
 app.use("/api/v1/user", userRoute)
+app.use("/api/v1/comapny", companyRoute)
+
 
 
 // Connect DB and start server
