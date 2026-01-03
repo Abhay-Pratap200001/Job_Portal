@@ -9,6 +9,8 @@ import { errorHandler } from "./middleware/error.middleware.js";
 import userRoute from './routes/user.route.js'
 import companyRoute from './routes/company.route.js'
 import jobRoute from './routes/job.route.js'
+import applicationRoute from './routes/application.route.js'
+
 
 
 
@@ -31,6 +33,8 @@ app.use(errorHandler);
 app.use("/api/v1/user", userRoute)
 app.use("/api/v1/comapny", companyRoute)
 app.use("/api/v1/job", jobRoute)
+app.use("/api/v1/application", applicationRoute)
+
 
 
 
