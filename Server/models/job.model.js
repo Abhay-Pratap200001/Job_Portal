@@ -40,6 +40,7 @@ const jobSchema = new mongoose.Schema({
         required: true
     },
 
+    //for know from which company job has come 
     company: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Company',

@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
 
 const applicationSchema = new mongoose.Schema({
+
+    //add all jobs under applicants for know that which jobs was applied by which appllicants
     job:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'Job',

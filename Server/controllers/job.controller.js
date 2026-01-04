@@ -2,10 +2,14 @@ import { Job } from "../models/job.model.js";
 import { ApiError } from "../utils/api.Error.js";
 import { asynHandler } from "../utils/asyncHandler.js";
 
+
+// posting the job 
 export const postJob = asynHandler(async (req, res) => {
   try {
     const { title, description, requirements, salary, experience, location, jobType, position, companyId} = req.body;
-    const userId = req.id;
+
+    const userId = req.id;//which user is creating job
+
     if ( !title || !description || !requirements || !salary || !experience || !location || !jobType || !position || !companyId) {
       res.status(400).json({
         message: "Some thing is missing",
@@ -41,7 +45,7 @@ export const postJob = asynHandler(async (req, res) => {
 
 // *******************************************************************************************************************//
 
-
+//get all jobs
 export const getAllJobs = asynHandler(async (req, res) => {
   try {
     const keyword = req.query.keyword || ""; //for accessing keyword to filter the job
@@ -52,9 +56,7 @@ export const getAllJobs = asynHandler(async (req, res) => {
       ],
     };
 
-    const jobs = await Job.find(query).populate({
-        path:"company"
-    }).sort({createdAt:-1})
+    const jobs = await Job.find(query).populate({path:"company"}).sort({createdAt:-1})
     if (!jobs) {
       return res.status(404).json({
         message: "Job not found",
@@ -77,10 +79,10 @@ export const getAllJobs = asynHandler(async (req, res) => {
 // *******************************************************************************************************************//
 
 
-
+// getting based on id
 export const getJobById = asynHandler(async (req, res) => {
   try {
-    const jobId = req.params.id;
+    const jobId = req.params.id; //getting job id from params
     const job = await Job.findById(jobId);
 
     if (!job) {
@@ -103,7 +105,7 @@ export const getJobById = asynHandler(async (req, res) => {
 // *******************************************************************************************************************//
 
 
-
+//get job which person is created
 export const getAdminJobs = asynHandler(async (req, res) => {
   try {
     const adminId = req.id;

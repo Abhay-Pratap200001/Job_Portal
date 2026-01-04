@@ -22,7 +22,7 @@ export const registerCompany = asynHandler(async(req, res) => {
 
         company = await Company.create({
             name:companyName,
-            userId:req.id
+            userId:req.id //which user is creating company
         })
 
         return res.status(201).json({
@@ -37,10 +37,10 @@ export const registerCompany = asynHandler(async(req, res) => {
 })
 
 
-
+//get all companies
 export const getCompanies = asynHandler(async(req, res) =>{
     try {
-        const userId = req.id
+        const userId = req.id //the user who created a comapnies
         const companies = await Company.find({userId})
         if (!companies) {
             return res.status(404).json({
@@ -60,10 +60,10 @@ export const getCompanies = asynHandler(async(req, res) =>{
 })
 
 
-
+//get specific companies
 export const getCompanyById = asynHandler(async(req, res) =>{
     try {
-        const companyId = req.params.id
+        const companyId = req.params.id //getting company id from params
         const company = await Company.findById(companyId)
           if (!company) {
             return res.status(404).json({
@@ -82,7 +82,7 @@ export const getCompanyById = asynHandler(async(req, res) =>{
 })
 
 
-
+// update company id
 export const updateCompany = asynHandler(async(req, res) =>{
     try {
         const {name, description, website, location} = req.body
