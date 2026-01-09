@@ -1,11 +1,11 @@
 import React from "react";
-import {
-  Carousel,
+import { Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
 } from "../components/ui/carousel";
+
 import { Button } from "./ui/button";
 
 const category = [
@@ -15,6 +15,7 @@ const category = [
   "Data Science",
   "Graphic Designer",
 ];
+
 
 const CategoryCarousel = () => {
   return (
@@ -36,4 +37,3 @@ const CategoryCarousel = () => {
 
 export default CategoryCarousel;
 
-// 5.5min
